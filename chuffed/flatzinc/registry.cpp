@@ -730,6 +730,30 @@ namespace FlatZinc {
 			var_sym_ldsb(iv0);
 		}
 
+    void p_diameter( const ConExpr& ce, AST::Node* ann) {
+      vec<IntVar*> iv0; arg2intvarargs(iv0, ce[0]);
+      vec<int> ia; arg2intargs(ia, ce[1]);
+      diameter(iv0,ia,getIntVar(ce[2]));
+    }
+
+    void p_cluster_distance_sum( const ConExpr& ce, AST::Node* ann) {
+      vec<IntVar*> iv0; arg2intvarargs(iv0, ce[0]);
+      vec<int> ia; arg2intargs(ia, ce[1]);
+      cluster_distance_sum(iv0,ia,ce[2]->getInt(),getIntVar(ce[3]));
+    }
+
+    void p_wcss( const ConExpr& ce, AST::Node* ann) {
+      vec<IntVar*> iv0; arg2intvarargs(iv0, ce[0]);
+      vec<int> ia; arg2intargs(ia, ce[1]);
+      wcss(iv0,ia,getIntVar(ce[2]),ce[3]->getInt());
+    }
+
+    void p_wcsd( const ConExpr& ce, AST::Node* ann) {
+      vec<IntVar*> iv0; arg2intvarargs(iv0, ce[0]);
+      vec<int> ia; arg2intargs(ia, ce[1]);
+      wcsd(iv0,ia,getIntVar(ce[2]),ce[3]->getInt());
+    }
+
 		void val_sym( const ConExpr& ce, AST::Node* ann) {
       vec<IntVar*> iv0; arg2intvarargs(iv0, ce[0]);
 			val_sym_ldsb(iv0, ce[1]->getInt(), ce[2]->getInt());
@@ -1101,6 +1125,10 @@ namespace FlatZinc {
 				registry().add("bool_lin_ge_reif", &p_bool_lin_ge_reif);
 				registry().add("bool_lin_gt_reif", &p_bool_lin_gt_reif);
 */
+        registry().add("diameter", &p_diameter);
+        registry().add("cluster_distance_sum", &p_cluster_distance_sum);
+        registry().add("wcss", &p_wcss);
+        registry().add("wcsd", &p_wcsd);
 			}
 		};
 		IntPoster __int_poster;

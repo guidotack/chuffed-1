@@ -78,4 +78,9 @@ void lex(vec<IntVar*>& x, vec<IntVar*>& y, bool strict);
 void var_sym_break(vec<IntVar*>& x);
 void val_sym_break(vec<IntVar*>& x, int l, int u);
 
+void diameter(vec<IntVar*>& x, vec<int>& dist, IntVar* y);
+void cluster_distance_sum(vec<IntVar*>& x, vec<int>& dist, int c, IntVar* y);
+void wcss(vec<IntVar*>& x, vec<int>& dist, IntVar* y, int k);
+void wcsd(vec<IntVar*>& x, vec<int>& dist, IntVar* y, int k);
+
 #endif
